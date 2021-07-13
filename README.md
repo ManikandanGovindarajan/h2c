@@ -1,65 +1,57 @@
-# h2c README
+# h2c
 
-This is the README for your extension "h2c". After writing up a brief description, we recommend including the following sections.
+Converts html tags with attribute 'data-h2c'  into Jsx Components and will add required import statements as mentioned in the data-h2c attribute.
+This extension will be mostly useful for the company's or individuals who uses existing npm jsx components in their org or community while build their new web app.
 
-## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+![Convert Html to jsx Component](./resources/SampleFeedBackComponent.gif)
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Structure of data-h2c attribute
 
-## Requirements
+```
+data-h2c=ComponentName::@myOrg/myPackage::prop1=value1,prop2=value2
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+data-h2c={AnotherComponentName}::@myOrg/myPackage1::prop1=value1,prop2=value2
+```
 
-## Extension Settings
+NOTE:
+1) the component name, package source, and attributes are delimited with double colon '::'
+2) enclose the component with curly braces for named import
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Add 'data-h2c' attribute to the child html tags that need to be persevered when replacing the parent html tag with JSX component, by default the html tag will be preserved if its containing a child with data-h2c
 
-For example:
 
-This extension contributes the following settings:
+Example Input
+```html
+<button data-h2c="{Button}::@myCompany/form-elements::name=Submit,colour=green,size=small"
+>
+    Submit
+</button>
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+```
 
-## Known Issues
+Converting html into jxs Components H2C:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+After installing the H2C extension, open js or jsx file which has html tags pasted in render method,
+then invoke command palette, and search & select 'Convert Html to jsx Component' and see the magic.
+
+
+Example Output
+```js
+
+import { Button } from "@myCompany/form-elements";
+
+
+<Button name="Submit" colour="green" size="small" />
+
+```
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+Initial release of h2c
 
-### 1.0.1
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
