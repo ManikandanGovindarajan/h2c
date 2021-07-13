@@ -3,7 +3,7 @@
 	"displayName": "h2c",
 	"publisher": "ManiG",
 	"description": "convert html into jsx component and adds required imports statements",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ManikandanGovindarajan/h2c.git"
