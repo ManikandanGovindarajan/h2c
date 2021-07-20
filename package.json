@@ -3,7 +3,7 @@
 	"displayName": "h2c",
 	"publisher": "ManiG",
 	"description": "convert html into jsx component and adds required imports statements",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ManikandanGovindarajan/h2c.git"
@@ -15,14 +15,29 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:h2c.convertHtmlToJSXComponent"
+		"onCommand:h2c.convertHtmlToJSXComponent",
+		"onCommand:h2c.convertHtmlToJSXComponentBasedOnH2cProp"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
+		"configuration": {
+			"title": "h2c (Html to jsx Component)",
+			"properties": {
+				"h2c.cssClassMapJsFile": {
+					"type": "string",
+					"scope": "resource",
+					"markdownDescription": "Provide css-class-map js file full path. Make sure content of JS file is IIFE  ``` (()=>{ /* return class-component-map js object */ return  { }; })();``` "
+				}
+			}
+		},
 		"commands": [
 			{
 				"command": "h2c.convertHtmlToJSXComponent",
 				"title": "Convert Html to jsx Component"
+			},
+			{
+				"command": "h2c.convertHtmlToJSXComponentBasedOnH2cProp",
+				"title": "Convert Html to jsx Component based on H2c Prop"
 			}
 		]
 	},
